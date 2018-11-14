@@ -1,28 +1,38 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <section class="hero is-fullheight">
+      <div class="hero-body">
+        <messages :data='messages' />
+      </div>
+      <div class="hero-foot">        
+        <send-message @send-message='updateMessage'/>          
+      </div>
+    </section>    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SendMessage from './components/SendMessage.vue'
+import Messages from './components/Messages.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Messages,
+    SendMessage
+  },
+  data() {
+    return {
+      messages: []
+    }
+  },
+  methods: {
+    updateMessage(message) {
+      // eslint-disable-next-line
+      console.log(this.messages, message);
+      
+      this.messages.push(message);
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
