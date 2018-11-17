@@ -17,8 +17,8 @@
     data() {
       return {
         message: {
-          author: 'joer',
-          who: 'me',
+          author: '',
+          who: '',
           text: ''
         }
       };
